@@ -21,6 +21,7 @@ import {
   saveSettings,
 } from "../lib/storage";
 import { generateRecurringEntries } from "../lib/recurrence";
+import { todayISO } from "../lib/dates";
 
 export interface BudgetStore {
   transactions: Transaction[];
@@ -194,7 +195,7 @@ export function useBudgetStore(): BudgetStore {
         fromAccountId: fromId,
         toAccountId: toId,
         amountCents,
-        date: new Date().toISOString().slice(0, 10),
+        date: todayISO(),
         description,
         createdAt: new Date().toISOString(),
       };

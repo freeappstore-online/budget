@@ -2,7 +2,16 @@
  * Get the current date as YYYY-MM-DD in local timezone.
  */
 export function todayISO(): string {
-  return new Date().toISOString().slice(0, 10);
+  return localISODate(new Date());
+}
+
+/**
+ * Format a Date as YYYY-MM-DD using its local calendar date.
+ */
+export function localISODate(d: Date): string {
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${m}-${day}`;
 }
 
 /**

@@ -1,5 +1,5 @@
 import type { Transaction, RecurrenceInterval } from "../types/budget";
-import { todayISO } from "./dates";
+import { localISODate, todayISO } from "./dates";
 
 /**
  * Given a set of recurring-source transactions and all existing transactions,
@@ -55,7 +55,7 @@ function getRecurrenceDates(
 
   let current = new Date(start);
   while (current <= end) {
-    const iso = current.toISOString().slice(0, 10);
+    const iso = localISODate(current);
     dates.push(iso);
     switch (interval) {
       case "weekly":
